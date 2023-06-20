@@ -12,7 +12,7 @@ import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class EmpresasService {
-    
+
     @Autowired
     private EmpresasRepository empresasRepository;
 
@@ -25,11 +25,13 @@ public class EmpresasService {
         return empresasRepository.findAll();
     }
 
-   
-
     public Empresas save(Empresas empresas) {
         return empresasRepository.save(empresas);
     }
 
+    public void deleteById(int id) {
+        Empresas empresas = getEmpresasById(id);
+        empresasRepository.delete(empresas);
+    }
 
 }
